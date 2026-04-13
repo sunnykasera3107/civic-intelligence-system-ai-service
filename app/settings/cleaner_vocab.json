@@ -1,0 +1,85 @@
+{
+    "words_to_remove": [
+        "and",
+        "or",
+        "a",
+        "an",
+        "the",
+        "is",
+        "are",
+        "am",
+        "of",
+        "to",
+        "in",
+        "on",
+        "at",
+        "for",
+        "with",
+        "by",
+        "from",
+        "as"
+    ],
+
+    "pronoun_contractions": {
+        "i'm": "i am",
+        "we're": "we are",
+        "you're": "you are",
+        "they're": "they are"
+    },
+
+    "not_contractions": {
+        "don't": "do not",
+        "doesn't": "does not",
+        "didn't": "did not",
+        "can't": "cannot",
+        "won't": "will not",
+        "shouldn't": "should not",
+        "wouldn't": "would not",
+        "couldn't": "could not",
+        "isn't": "is not",
+        "aren't": "are not",
+        "wasn't": "was not",
+        "weren't": "were not"
+    },
+
+    "ambiguous": {
+        "he's": {
+            "past": {
+                "ed": "he has",
+                "en": "he has"
+            },
+            "fall_back": "he is"
+        },
+        "she's": {
+            "past": {
+                "ed": "she has",
+                "en": "she has"
+            },
+            "fall_back": "she is"
+        },
+        "it's": {
+            "past": {
+                "ed": "it has",
+                "en": "it has"
+            },
+            "fall_back": "it is"
+        },
+        "i'd": {
+            "past": {
+                "ed": "i had",
+                "en": "i had"
+            },
+            "fall_back": "i would"
+        },
+        "they'd": {
+            "past": {
+                "ed": "they had",
+                "en": "they had"
+            },
+            "fall_back": "they would"
+        }
+    }
+
+
+
+}

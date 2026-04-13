@@ -1,0 +1,35 @@
+issueanalysis_task:
+  description: >
+    Conduct a cleaning process to clean the query {query}
+    Use cleaner tool for cleaning query
+    Make sure to add prompt using the same cleaner tools as it has prompt feature inbuilt
+    Send query to LLM for possible response
+    The response should be precise to user query
+    Get location address using the cleaner tool
+    Give a possible solution for the problem
+  expected_output: >
+    A JSON formatted output expected. The format of the out is mentioned in the prompt.
+    For location address Don't say Near user's house. 
+    Instead mention a physical address of user based on coordinates
+    Return ONLY valid JSON with the following structure:
+      {{
+          "query": "Original query of user",
+          "location": {{
+              "google_maps_link": "https://www.google.com/maps?q=lat,lng",
+              "location_address": {
+                  "address": "Building address, landmark",
+                  "city": "city",
+                  "state": "state",
+                  "country": "country",
+                  "postcode": "postcode",
+                  "raw": "raw output"
+              }
+          }},
+          "intent": "one of: complaint | request | report | emergency | inquiry",
+          "category": "single best category (e.g., streetlight, drainage, water, garbage, road, electricity, public safety, etc.)",
+          "subcategory": "single best subcategory based on category (e.g., drainage log, water leakage, tap out of water, etc.)"
+          "resolution": "One short actionable fix or next step suggestion",
+          "precaution": [
+              "List of 2-4 safety precautions relevant to the issue"
+          ]
+      }}
