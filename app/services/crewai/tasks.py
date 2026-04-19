@@ -22,9 +22,17 @@ class CrewTasks:
         self._agents_obj = agent_obj or CrewAgents()
 
     @task
+    def improvement_task(self) -> Task:
+        return Task(
+            config=self._config['improvement_task'],
+            agent=self._agents_obj.improver()
+        )
+    
+    @task
     def issueanalysis_task(self) -> Task:
         return Task(
             config=self._config['issueanalysis_task'],
+            context=[self.improvement_task()],
             agent=self._agents_obj.issueanalyzer()
         )
     

@@ -29,10 +29,22 @@ class CrewAgents:
     def _get_llm(self) -> LLM:
         self._logger.info("Creating LLM object")
         return LLM(
-            model="ollama/deepseek-v3.1:671b-cloud",
+            model="groq/llama-3.3-70b-versatile"
+        )
+        return LLM(
+            model="ollama/gpt-oss:120b-cloud",
             base_url="http://host.docker.internal:11434"
         )
         
+    @agent
+    def improver(self) -> Agent:
+        self._logger.info("Improver agent starting improvement")
+        llm = self._get_llm()
+        return Agent(
+            config=self._config['improver'],  # type: ignore[index]
+            llm=llm
+        )
+    
     @agent
     def issueanalyzer(self) -> Agent:
         self._logger.info("Issue Analyzer agent starting analysis")

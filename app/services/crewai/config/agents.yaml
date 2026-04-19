@@ -1,3 +1,12 @@
+improver:
+  role: Query Quality Improvement Expert
+  goal: Your goal is to improve quality of user query. Fix typo errors, Make the query contextful.
+  backstory: |
+    You are a quality improvement expert agent. And you job is to take user query and improve it's quality.
+    - Fix any typo mistake done by user
+    - Make the query contextful
+  verbose: true
+
 issueanalyzer:
   role: Query Cleaning Expert
   goal: Your goal is to clean the user query. Removing punctuations, special characters, converting number names to digits, removing extra spaces.

@@ -7,7 +7,6 @@ from crewai.tools import BaseTool
 from app.utils.helper import Helper
 from app.utils.file_loader import load_json
 
-
 class Cleaner(BaseTool):
 
     name: str = "Query Cleaner"
@@ -20,12 +19,11 @@ class Cleaner(BaseTool):
         self._logger.info("Reading cleaner vocab")
         self._query_cleaner_vocab = load_json(file_path)
 
-    def _run(self, query, coord):
+    def _run(self, query: str, coord: tuple):
         location_address = []
         try:
             if coord is not None:
-                lat, long = coord
-                location_address = Helper.get_address_from_coordinates(lat, long)
+                location_address = Helper.get_address_from_coordinates(", ".join(map(str, coord)))
         except ValueError as e:
             self._logger.error(f"Value Error: {str(e)}")
         except Exception as e:
@@ -36,13 +34,15 @@ class Cleaner(BaseTool):
         self._clean_query = query.lower().strip()
         self._clean_contraction_()
         self._clean_ambiguous_()
-        self._remove_punctuation_()
-        self._lemmatization_()
+        # self._remove_punctuation_()
+        # self._lemmatization_()
         self._convert_number_name_()
         self._clear_extra_space_()
         self._query["clean_query"] = self._clean_query
         self._query["location_address"] = location_address
-        return {"query": json.dumps(self._query), "coord": coord}
+        self._query["location"] = coord
+        # Prompt of query is managed in task.yaml of crewai task file
+        return self._query
     
     def _lemmatization_(self):
         self._logger.info("Performing lemmatization")

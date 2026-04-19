@@ -24,6 +24,7 @@ def load_yaml(relative_path: str) -> dict:
     _logger.info(f"Reading file: {full_path}")
     try:
         with open(full_path, "r") as file:
-            return yaml.safe_load(file)
+            settings = yaml.safe_load(file)
+            return settings
     except Exception as e:
         _logger.error(f"Exception: {str(e)}")

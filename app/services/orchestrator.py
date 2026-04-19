@@ -14,8 +14,8 @@ class Orchestrator:
         user_query = json.dumps({"query": query, "coord": coord or ()})
         self._logger.info(f"query: {user_query}")
         response = self._crew.maincrew().kickoff(inputs={"query": user_query})
-        response = json.loads(response.raw or response)
-        return {"response": response}
+        self._logger.info(response.raw or response)
+        return {"response": (response.raw or response)}
 
     async def close_connection(self):
         await self._httpclient.close()

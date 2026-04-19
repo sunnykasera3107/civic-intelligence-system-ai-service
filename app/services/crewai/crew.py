@@ -14,6 +14,6 @@ class MainCrew:
         tasks = CrewTasks()
 
         return Crew(
-            agents=[agents.issueanalyzer()],
-            tasks=[tasks.issueanalysis_task()]
+            agents=[agents.improver(), agents.issueanalyzer()],
+            tasks=[tasks.improvement_task(), tasks.issueanalysis_task()]
         )
