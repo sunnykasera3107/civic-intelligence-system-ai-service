@@ -1,8 +1,12 @@
 fastapi[standard]
 uvicorn[standard]
 httpx
-groq
+SQLAlchemy
+psycopg2-binary
+pydantic
 crewai
 crewai_tools
+groq
 litellm
 geopy
+redis
