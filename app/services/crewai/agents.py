@@ -28,9 +28,9 @@ class CrewAgents:
     
     def _get_llm(self) -> LLM:
         self._logger.info("Creating LLM object")
-        return LLM(
-            model="groq/llama-3.3-70b-versatile"
-        )
+        # return LLM(
+        #     model="groq/llama-3.3-70b-versatile"
+        # )
         return LLM(
             model="ollama/gpt-oss:120b-cloud",
             base_url="http://host.docker.internal:11434"

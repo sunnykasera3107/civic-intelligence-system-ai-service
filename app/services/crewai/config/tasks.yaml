@@ -34,6 +34,7 @@ issueanalysis_task:
     No markdown.
     No extra uses of token.
     No <|...|> tokens.
+    No similar version of category and subcategory. Use only the allowed list and match with category and subcategory.
     Return ONLY valid JSON with the following structure:
       {{
           "query": "Original query of user",
