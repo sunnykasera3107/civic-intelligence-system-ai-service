@@ -156,5 +156,5 @@ class Cleaner(BaseTool):
             total += current
             result.append(str(total))
 
-        self._clean_query = "".join(result)
+        self._clean_query = " ".join(result)
         self._logger.info(f"Replaced number name into number: {self._clean_query}")
